@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.john.adoptionproject.Activity.PerfilActivity">
+
+
+    <ImageView
+        android:id="@+id/ivFotoPerfil"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_add_a_photo_black_24dp" />
+
+    <Button
+        android:id="@+id/btnGravarFoto"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:text="Tirar nova foto"
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:gravity="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/etxtPerfilNome"
+        android:hint="Nome"
+        android:inputType="text"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/etxtPerfilSobrenome"
+        android:hint="Sobrenome"
+        android:inputType="text"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/etxtPerfilEmail"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/etxtPerfilSenha"
+        android:inputType="textPassword"
+        android:hint="Senha"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="130dp"
+        android:id="@+id/btnEditarPerfil"
+        android:text="Editar perfil"
+        android:layout_gravity="left"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnSalvarPerfil"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Salvar" />
+
+
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.john.adoptionproject.Activity.CadastroActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etxtCadNome"
+                android:inputType="textCapCharacters"
+                android:hint="Nome"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etxtCadSobrenome"
+                android:inputType="textCapCharacters"
+                android:hint="Sobrenome"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etxtCadEmail"
+                android:inputType="textEmailAddress"
+                android:hint="e-mail"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etxtCadSenha"
+                android:inputType="textPassword"
+                android:hint="Senha"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etxtCadConfirmaSenha"
+                android:inputType="textPassword"
+                android:hint="Confirmar Senha"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:id="@+id/rgSexo"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rbMasculino"
+                    android:text="M"
+                    android:checked="true"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rbFeminino"
+                    android:text="F"
+                    android:checked="false"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+            <Button
+                android:layout_width="match_parent"
+                android:id="@+id/btnCadastrar"
+                android:text="Cadastrar"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

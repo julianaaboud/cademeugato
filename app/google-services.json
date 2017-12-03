@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "681348073493",
+    "firebase_url": "https://adoptionproject-c4b53.firebaseio.com",
+    "project_id": "adoptionproject-c4b53",
+    "storage_bucket": "adoptionproject-c4b53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681348073493:android:321a5f08703b0536",
+        "android_client_info": {
+          "package_name": "br.com.john.adoptionproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681348073493-kn1kcv529nuid0p675dpp570bta0d59n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.john.adoptionproject",
+            "certificate_hash": "a98e533785e2e5f444348773517d49f43169c3cb"
+          }
+        },
+        {
+          "client_id": "681348073493-s3mrfjqf6bfq74n20tqhf7mqcdehgbr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByzrlKZAlDE2ZFk3Fxl7bbQHC5WDU4h1o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681348073493-s3mrfjqf6bfq74n20tqhf7mqcdehgbr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
