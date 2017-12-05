@@ -5,21 +5,86 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="18dp"
     tools:context="br.com.john.adoptionproject.Activity.MenuActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:text="Menu"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:id="@+id/txtMenu"
-        android:layout_height="wrap_content" />
-
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:id="@+id/btnMeuPerfil"
         android:text="Meu perfil"
+        android:layout_gravity="center"
         android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/option1_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_shape"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:src="@drawable/gatodebotas" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/adotar"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/option2_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_shape"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:src="@drawable/gato" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/disponibilizar"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

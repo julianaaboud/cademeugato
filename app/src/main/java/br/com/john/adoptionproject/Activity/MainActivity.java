@@ -15,8 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 import br.com.john.adoptionproject.DAO.ConfiguracaoFirebase;
 import br.com.john.adoptionproject.Entidades.Users;
 import br.com.john.adoptionproject.R;
@@ -74,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()){
                     abrirTelaPrincipal();
-                    Toast.makeText(MainActivity.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -87,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void abrirCadastroUsuario(){
-        Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
+        Intent intent = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
         startActivity(intent);
     }
 }

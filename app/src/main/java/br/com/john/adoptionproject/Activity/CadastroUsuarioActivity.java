@@ -1,12 +1,19 @@
 package br.com.john.adoptionproject.Activity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -25,9 +32,10 @@ import br.com.john.adoptionproject.Helper.Base64Custom;
 import br.com.john.adoptionproject.Helper.Preferencias;
 import br.com.john.adoptionproject.R;
 
-public class CadastroActivity extends AppCompatActivity {
+public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private EditText etxtCadNome, etxtCadSobrenome, etxtCadEmail, etxtCadSenha, etxtCadConfirmaSenha;
+    private ImageView fotoImageView;
     private RadioButton rbMasculino, rbFeminino;
     private Button btnCadastrar;
     private Users users;
@@ -46,7 +54,7 @@ public class CadastroActivity extends AppCompatActivity {
         rbMasculino = (RadioButton) findViewById(R.id.rbMasculino);
         rbFeminino = (RadioButton) findViewById(R.id.rbFeminino);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
-
+        fotoImageView = (ImageView) findViewById(R.id.fotoImageView);
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
 
@@ -65,7 +73,7 @@ public class CadastroActivity extends AppCompatActivity {
                     }
                     cadastrarUsuario();
                 } else {
-                    Toast.makeText(CadastroActivity.this, "As senhas não são iguais", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroUsuarioActivity.this, "As senhas não são iguais", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -73,17 +81,46 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
+    public void takePic (View view){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.CAMERA}, REQUEST_PERMISSION_CAMERA);
+        }
+        else{
+            startActivityForResult( new Intent(MediaStore.ACTION_IMAGE_CAPTURE), REQUEST_CAMERA);
+        }
+
+    }
+
+    private final int REQUEST_CAMERA = 1;
+    private final int REQUEST_PERMISSION_CAMERA = 2;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (Activity.RESULT_OK == resultCode){
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            fotoImageView.setImageBitmap(bitmap);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            startActivityForResult( new Intent(MediaStore.ACTION_IMAGE_CAPTURE), REQUEST_CAMERA);
+        }
+    }
+
+
     private void cadastrarUsuario() {
 
         appAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
         appAuth.createUserWithEmailAndPassword(
                 users.getEmail(),
                 users.getPassword()
-        ).addOnCompleteListener(CadastroActivity.this, new OnCompleteListener<AuthResult>() {
+        ).addOnCompleteListener(CadastroUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(CadastroActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroUsuarioActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
 
                     String identificadorUsuario = Base64Custom.codificarBase64(users.getEmail());
 
@@ -92,37 +129,32 @@ public class CadastroActivity extends AppCompatActivity {
                     users.setId(identificadorUsuario);
                     users.salvar();
 
-                    Preferencias preferencias = new Preferencias(CadastroActivity.this);
+                    Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
                     preferencias.salvarUsuarioPreferencias(identificadorUsuario, users.getName());
 
                     abrirLoginUsuario();
                 } else {
                     String erroExcecao = "";
-
                     try {
                         throw task.getException();
                     } catch (FirebaseAuthWeakPasswordException e) {
-
                         erroExcecao = "Digite uma senha mais forte, contendo no mínimo 8 caracteres de letras e números";
                     } catch (FirebaseAuthInvalidCredentialsException e) {
-
                         erroExcecao = "E-mail inválido";
                     } catch (FirebaseAuthUserCollisionException e) {
-
                         erroExcecao = "E-mail já cadastrado!";
                     } catch (Exception e) {
-
                         erroExcecao = "Erro ao efetuar o cadastro";
                         e.printStackTrace();
                     }
-                    Toast.makeText(CadastroActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroUsuarioActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     public void abrirLoginUsuario() {
-        Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
+        Intent intent = new Intent(CadastroUsuarioActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

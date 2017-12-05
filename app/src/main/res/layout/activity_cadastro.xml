@@ -5,8 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context="br.com.john.adoptionproject.Activity.CadastroActivity">
+    android:padding="15dp"
+    tools:context="br.com.john.adoptionproject.Activity.CadastroUsuarioActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/txtSexo"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Sexo: "
                     android:layout_marginLeft="8dp"/>
 
@@ -82,6 +82,15 @@
                     android:layout_height="match_parent" />
 
             </RadioGroup>
+
+            <ImageView
+                android:id="@+id/fotoImageView"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/ic_photo_camera_black_24dp"
+                android:onClick="takePic"
+                tools:ignore="VectorDrawableCompat" />
 
             <Button
                 android:layout_width="wrap_content"

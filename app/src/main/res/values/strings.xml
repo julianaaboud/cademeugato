@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">AdoptionProject</string>
+    <string name="app_name">Cadê meu Gato?</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="nome">Nome</string>
     <string name="sobrenome">Sobrenome</string>
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
     <string name="confirmar_senha">Confirmar Senha</string>
+    <string name="caracteristicas">Características: </string>
+    <string name="disponibilizar">Disponibilizar para adoção</string>
+    <string name="adotar">Adotar</string>
+    <string name="digite_caracteristica">Digite detalhadamente as características do Gato: </string>
+    <string name="cadastra_gato">Cadastrar Gato</string>
 </resources>

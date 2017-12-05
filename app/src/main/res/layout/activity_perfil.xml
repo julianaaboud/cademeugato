@@ -63,6 +63,4 @@
         android:layout_gravity="left"
         android:text="Salvar" />
 
-
-
 </LinearLayout>
