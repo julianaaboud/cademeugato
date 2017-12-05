@@ -1,9 +1,10 @@
 package br.com.john.adoptionproject.Activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtCadastrarLink;
     private FirebaseAuth appAuth;
     private Users users;
+    private static final String TAG = MainActivity.class.getName();
 
 
     @Override
@@ -80,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void abrirTelaPrincipal(){
         Intent intentAbrirTelaPrincipal = new Intent(MainActivity.this, MenuActivity.class);
+        Log.d(TAG, "token no main" + appAuth.getCurrentUser().getUid());
+        intentAbrirTelaPrincipal.putExtra("token", appAuth.getCurrentUser().getUid());
         startActivity(intentAbrirTelaPrincipal);
     }
 

@@ -12,7 +12,7 @@
         android:id="@+id/fotoImageView"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         app:srcCompat="@drawable/ic_photo_camera_black_24dp"
         android:onClick="takePic"
         tools:ignore="VectorDrawableCompat" />
@@ -20,13 +20,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/caracteristica"
         android:hint="@string/digite_caracteristica"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0.5"
         android:layout_gravity="center"
         android:text="@string/cadastra_gato"
         android:id="@+id/btn_cadastra_gato"/>

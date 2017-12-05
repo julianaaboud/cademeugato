@@ -28,8 +28,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import br.com.john.adoptionproject.DAO.ConfiguracaoFirebase;
 import br.com.john.adoptionproject.Entidades.Users;
-import br.com.john.adoptionproject.Helper.Base64Custom;
-import br.com.john.adoptionproject.Helper.Preferencias;
 import br.com.john.adoptionproject.R;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -111,7 +109,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
 
     private void cadastrarUsuario() {
-
         appAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
         appAuth.createUserWithEmailAndPassword(
                 users.getEmail(),
@@ -121,16 +118,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(CadastroUsuarioActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
-
-                    String identificadorUsuario = Base64Custom.codificarBase64(users.getEmail());
-
                     FirebaseUser usuarioFirebase = task.getResult().getUser();
-
-                    users.setId(identificadorUsuario);
+                    users.setId(usuarioFirebase.getUid());
                     users.salvar();
-
-                    Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
-                    preferencias.salvarUsuarioPreferencias(identificadorUsuario, users.getName());
 
                     abrirLoginUsuario();
                 } else {
