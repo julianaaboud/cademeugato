@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AdoptionProject.iml" filepath="$PROJECT_DIR$/AdoptionProject.iml" />
+      <module fileurl="file://C:\Users\Juliana\Desktop\cademeugato\AdoptionProject.iml" filepath="C:\Users\Juliana\Desktop\cademeugato\AdoptionProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Juliana\Desktop\cademeugato\app\app.iml" filepath="C:\Users\Juliana\Desktop\cademeugato\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cademeugato.iml" filepath="$PROJECT_DIR$/cademeugato.iml" />
     </modules>
   </component>
 </project>

@@ -51,27 +51,20 @@ public class CadastroActivity extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick (View v){
-                if (etxtCadSenha.getText().toString().equals(etxtCadConfirmaSenha.getText().toString())){
+            public void onClick(View v) {
+                if (etxtCadSenha.getText().toString().equals(etxtCadConfirmaSenha.getText().toString())) {
                     users = new Users();
                     users.setName(etxtCadNome.getText().toString());
                     users.setSurname(etxtCadSobrenome.getText().toString());
                     users.setEmail(etxtCadEmail.getText().toString());
                     users.setPassword(etxtCadSenha.getText().toString());
-
-                    if (rbMasculino.isChecked()){
-
+                    if (rbMasculino.isChecked()) {
                         users.setSex("Masculino");
-
-                    }
-                    else{
+                    } else {
                         users.setSex("Feminino");
                     }
-
                     cadastrarUsuario();
-
-                }
-                else {
+                } else {
                     Toast.makeText(CadastroActivity.this, "As senhas não são iguais", Toast.LENGTH_LONG).show();
                 }
             }
@@ -80,7 +73,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
-    private void cadastrarUsuario(){
+    private void cadastrarUsuario() {
 
         appAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
         appAuth.createUserWithEmailAndPassword(
@@ -89,7 +82,7 @@ public class CadastroActivity extends AppCompatActivity {
         ).addOnCompleteListener(CadastroActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(CadastroActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
 
                     String identificadorUsuario = Base64Custom.codificarBase64(users.getEmail());
@@ -103,37 +96,32 @@ public class CadastroActivity extends AppCompatActivity {
                     preferencias.salvarUsuarioPreferencias(identificadorUsuario, users.getName());
 
                     abrirLoginUsuario();
-                }
-                else {
+                } else {
                     String erroExcecao = "";
 
-                    try{
+                    try {
                         throw task.getException();
-                    }
-                    catch (FirebaseAuthWeakPasswordException e){
+                    } catch (FirebaseAuthWeakPasswordException e) {
 
                         erroExcecao = "Digite uma senha mais forte, contendo no mínimo 8 caracteres de letras e números";
-                    }
-                    catch (FirebaseAuthInvalidCredentialsException e){
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
 
-                        erroExcecao = "O e-mail digitado é inválido, digite um novo e-mail";
-                    }
-                    catch (FirebaseAuthUserCollisionException e){
+                        erroExcecao = "E-mail inválido";
+                    } catch (FirebaseAuthUserCollisionException e) {
 
-                        erroExcecao = "Este e-mail já está cadastrado no sistema";
-                    }
-                    catch (Exception e){
+                        erroExcecao = "E-mail já cadastrado!";
+                    } catch (Exception e) {
 
                         erroExcecao = "Erro ao efetuar o cadastro";
                         e.printStackTrace();
                     }
-                    Toast.makeText(CadastroActivity.this, "Erro: "+ erroExcecao, Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    public void abrirLoginUsuario (){
+    public void abrirLoginUsuario() {
         Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
         startActivity(intent);
         finish();

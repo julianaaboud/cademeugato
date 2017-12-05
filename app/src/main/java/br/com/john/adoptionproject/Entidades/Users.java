@@ -39,6 +39,7 @@ public class Users {
         return hashMapUsuario;
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -85,5 +86,17 @@ public class Users {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", sex='" + sex + '\'' +
+                '}';
     }
 }
