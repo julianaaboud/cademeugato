@@ -35,7 +35,8 @@ public class MenuActivity extends AppCompatActivity {
         option1CardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MenuActivity.this, MapsActivity.class);
+                startActivity(intent);
             }
         });
 
