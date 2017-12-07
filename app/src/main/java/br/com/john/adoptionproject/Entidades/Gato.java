@@ -3,6 +3,7 @@ package br.com.john.adoptionproject.Entidades;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
@@ -17,7 +18,8 @@ import br.com.john.adoptionproject.DAO.ConfiguracaoFirebase;
  */
 
 public class Gato {
-    private String caracteristicas, donoGato;
+    private String caracteristicas, donoGato, telefone, foto;
+    LatLng latLng;
     private static Gato instance;
     private static List<Gato> gatoList = new ArrayList<>();
 
@@ -29,16 +31,19 @@ public class Gato {
         referenciaFirebase.setValue(this, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                Toast.makeText(context, "Sucesso ao cadastrar o Gato", Toast.LENGTH_LONG).show();
+
                 getGatoList().add(gato);
             }
         });
     }
 
 
-    public Gato(String caracteristicas, String donoGato) {
+    public Gato(String caracteristicas, String donoGato, String telefone, String foto, LatLng latLng) {
         this.caracteristicas = caracteristicas;
         this.donoGato = donoGato;
+        this.telefone = telefone;
+        this.foto = foto;
+        this.latLng = latLng;
     }
 
     @Exclude
@@ -63,11 +68,37 @@ public class Gato {
         this.donoGato = donoGato;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
+    public void setLatLng(LatLng latLng) {
+        this.latLng = latLng;
+    }
+
     @Override
     public String toString() {
         return "Gato{" +
                 "caracteristicas='" + caracteristicas + '\'' +
                 ", donoGato='" + donoGato + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", foto='" + foto + '\'' +
                 '}';
     }
 
@@ -75,9 +106,10 @@ public class Gato {
         return gatoList;
     }
 
-    public static void setOngList(List<Gato> gatoList) {
+    public static void setGatoList(List<Gato> gatoList) {
         Gato.gatoList = gatoList;
     }
 
 }
+
 

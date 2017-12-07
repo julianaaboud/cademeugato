@@ -5,31 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="18dp"
     tools:context="br.com.john.adoptionproject.Activity.CadastroGatoActivity">
 
 
-    <ImageView
-        android:id="@+id/fotoImageView"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/ic_photo_camera_black_24dp"
-        android:onClick="takePic"
-        tools:ignore="VectorDrawableCompat" />
-
     <EditText
         android:layout_width="match_parent"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:id="@+id/caracteristica"
         android:hint="@string/digite_caracteristica"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:id="@+id/telefone"
+        android:hint="@string/telefone"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/fotoImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_photo_camera_black_24dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="120dp"
+            android:onClick="takePic"
+            tools:ignore="VectorDrawableCompat" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+
+        <ImageView
+            android:id="@+id/fotoImageView1"
+            android:layout_width="90dp"
+            android:layout_height="100dp"
+            android:onClick="takePic"
+            tools:ignore="VectorDrawableCompat" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/foto"/>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center">
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:layout_gravity="center"
         android:text="@string/cadastra_gato"
         android:id="@+id/btn_cadastra_gato"/>
+
+</LinearLayout>
 
 </LinearLayout>

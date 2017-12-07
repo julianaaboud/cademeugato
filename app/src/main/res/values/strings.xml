@@ -12,4 +12,6 @@
     <string name="digite_caracteristica">Digite detalhadamente as características do Gato: </string>
     <string name="cadastra_gato">Cadastrar Gato</string>
     <string name="title_activity_maps">Map</string>
+    <string name="telefone">Telefone no formato: 11999999999</string>
+    <string name="foto">Ao clicar para tirar foto, aguarde até que a imagem esteja carregada! Caso queira tirar mais fotos clique novamente na imagem da câmera!</string>
 </resources>

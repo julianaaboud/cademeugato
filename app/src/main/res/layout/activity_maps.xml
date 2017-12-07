@@ -13,13 +13,6 @@ android:orientation="vertical">
     android:layout_weight="4"
     tools:context="br.com.john.adoptionproject.Activity.MapsActivity" />
 
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:onClick="checkin"
-    android:text="Checkin"/>
-
 </LinearLayout>
 
 

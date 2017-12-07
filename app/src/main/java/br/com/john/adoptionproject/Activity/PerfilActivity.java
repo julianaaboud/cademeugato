@@ -2,20 +2,23 @@ package br.com.john.adoptionproject.Activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import br.com.john.adoptionproject.DAO.ConfiguracaoFirebase;
 import br.com.john.adoptionproject.R;
 
 public class PerfilActivity extends AppCompatActivity {
@@ -24,15 +27,23 @@ public class PerfilActivity extends AppCompatActivity {
     //private static final int RESULT_LOAD_IMAGE = 1;
     private Button btnGravarFoto;
     private ImageView ivFotoPerfil;
-
+    private Bundle bundle;
+    private String token;
     private StorageReference appStorage;
+    private static final String TAG = PerfilActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
 
         appStorage = FirebaseStorage.getInstance().getReference();
+
+        bundle = getIntent().getExtras();
+        token = bundle.getString("token");
+        referenciaFirebase.child("usuario").child("token");
+        Log.d(TAG, "referencia " + token);
 
         btnGravarFoto = (Button) findViewById(R.id.btnGravarFoto);
         ivFotoPerfil = (ImageView) findViewById(R.id.ivFotoPerfil);
@@ -43,8 +54,6 @@ public class PerfilActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-
-
             }
         });
     }
