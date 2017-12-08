@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">私の猫はどこですか？</string>
+    <string name="title_activity_menu">メニュー</string>
+    <string name="nome">名前</string>
+    <string name="sobrenome">例：</string>
+    <string name="email">メール</string>
+    <string name="senha">パスワード</string>
+    <string name="confirmar_senha">パスワードの確認</string>
+    <string name="caracteristicas">特徴: </string>
+    <string name="disponibilizar">採用可能にする</string>
+    <string name="adotar">採用する</string>
+    <string name="digite_caracteristica">猫の詳細を詳細に入力してください：</string>
+    <string name="cadastra_gato">猫登録</string>
+    <string name="title_activity_maps">地図</string>
+    <string name="telefone">電話形式：11999999999</string>
+    <string name="foto">クリックして写真を撮ると、画面に画像が読み込まれるまで待ちます！より多くの写真を撮りたい場合は、カメラの画像をもう一度クリックしてください！</string>
+</resources>

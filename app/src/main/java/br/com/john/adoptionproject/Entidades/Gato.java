@@ -1,7 +1,6 @@
 package br.com.john.adoptionproject.Entidades;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseError;
@@ -31,12 +30,16 @@ public class Gato {
         referenciaFirebase.setValue(this, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-
                 getGatoList().add(gato);
             }
         });
     }
 
+
+    @Exclude
+    public static Gato getInstance (){
+        return instance == null ? instance = new Gato() : instance;
+    }
 
     public Gato(String caracteristicas, String donoGato, String telefone, String foto, LatLng latLng) {
         this.caracteristicas = caracteristicas;
@@ -44,12 +47,7 @@ public class Gato {
         this.telefone = telefone;
         this.foto = foto;
         this.latLng = latLng;
-    }
 
-    @Exclude
-    public static Gato getInstance (){
-
-        return instance == null ? instance = new Gato() : instance;
     }
 
     public String getCaracteristicas() {
@@ -99,6 +97,7 @@ public class Gato {
                 ", donoGato='" + donoGato + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", foto='" + foto + '\'' +
+                ", latLng='" + latLng + '\'' +
                 '}';
     }
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cadê meu Gato?</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="nome">Nome</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
+    <string name="caracteristicas">Características: </string>
+    <string name="disponibilizar">Disponibilizar para adoção</string>
+    <string name="adotar">Adotar</string>
+    <string name="digite_caracteristica">Digite detalhadamente as características do Gato: </string>
+    <string name="cadastra_gato">Cadastrar Gato</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="telefone">Telefone no formato: 11999999999</string>
+    <string name="foto">Ao clicar para tirar foto, aguarde até que a imagem esteja carregada na tela! Caso queira tirar mais fotos clique novamente na imagem da câmera!</string>
+</resources>

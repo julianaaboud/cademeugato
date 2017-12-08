@@ -99,7 +99,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         }
                     }
                 });
-
     }
 
 
@@ -125,6 +124,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[]
             permissions, @NonNull int[] grantResults) {
@@ -141,20 +142,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    @Override
+
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        String lat, lon;
         LatLng posicao;
         String telefone;
         //Laço para pegar o endereço
         for (Gato gato : listGato) {
+            Log.d(TAG, "gato " + gato);
             posicao = gato.getLatLng();
             telefone = gato.getTelefone();
-          googleMap.addMarker(new MarkerOptions().position(posicao).title(telefone).icon(BitmapDescriptorFactory.defaultMarker()));
+            googleMap.addMarker(new MarkerOptions().position(posicao).title(telefone).icon(BitmapDescriptorFactory.defaultMarker()));
         }
     }
-
-
 }
+
+
+
+
+

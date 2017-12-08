@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wo ist meine Katze?</string>
+    <string name="title_activity_menu">Menü</string>
+    <string name="nome">Name</string>
+    <string name="sobrenome">Nachname</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Zeichen</string>
+    <string name="confirmar_senha">Passwort bestätigen</string>
+    <string name="caracteristicas">Eigenschaften: </string>
+    <string name="disponibilizar">Angebot zur Adoption</string>
+    <string name="adotar">Adoptieren</string>
+    <string name="digite_caracteristica">Geben Sie die Merkmale der Katze im Detail ein:</string>
+    <string name="cadastra_gato">Registrieren</string>
+    <string name="title_activity_maps">Karte</string>
+    <string name="telefone">Telefon im Format: 11999999999</string>
+    <string name="foto">Wenn Sie auf ein Foto klicken, warten Sie, bis das Bild auf dem Bildschirm geladen ist. Wenn Sie mehr Fotos machen möchten, klicken Sie erneut auf das Bild der Kamera!</string>
+</resources>

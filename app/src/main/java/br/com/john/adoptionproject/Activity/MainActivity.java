@@ -15,19 +15,28 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 import br.com.john.adoptionproject.DAO.ConfiguracaoFirebase;
+import br.com.john.adoptionproject.Entidades.Gato;
 import br.com.john.adoptionproject.Entidades.Users;
 import br.com.john.adoptionproject.R;
 
 public class MainActivity extends AppCompatActivity {
-
+    private List<Gato> listGato = Gato.getInstance().getGatoList();
     private EditText etxtEmail, etxtSenha;
     private Button btnLogin;
     private TextView txtCadastrarLink;
     private FirebaseAuth appAuth;
     private Users users;
     private static final String TAG = MainActivity.class.getName();
+    final DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
 
 
     @Override
@@ -35,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //buscaListaDeGato();
         etxtEmail = (EditText) findViewById(R.id.etxtEmail);
         etxtSenha = (EditText) findViewById(R.id.etxtSenha);
         txtCadastrarLink = (TextView) findViewById(R.id.txtCadastrarLink);
@@ -90,5 +99,28 @@ public class MainActivity extends AppCompatActivity {
     public void abrirCadastroUsuario(){
         Intent intent = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
         startActivity(intent);
+    }
+
+
+
+    public void buscaListaDeGato() {
+        //Busca no Firebase
+        Query buscaQuery = referenciaFirebase.child("gato");
+
+        //Snapshot
+        buscaQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Gato gato = postSnapshot.getValue(Gato.class);
+                    Log.d(TAG, "gato: " + gato.getCaracteristicas());
+                    listGato.add(gato);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }

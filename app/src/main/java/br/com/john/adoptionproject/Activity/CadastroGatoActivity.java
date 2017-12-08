@@ -48,7 +48,8 @@ public class CadastroGatoActivity extends AppCompatActivity {
     private StorageReference appStorage;
     private ImageView camera;
     private ImageView fotoGato = null;
-
+    private Uri downloadUri;
+    private Uri uri;
 
 
     private static final String TAG = CadastroGatoActivity.class.getName();
@@ -82,8 +83,7 @@ public class CadastroGatoActivity extends AppCompatActivity {
                             lon = String.valueOf(location.getLongitude());
                             Log.d(TAG, "currentLocation lat " + lat);
                             Log.d(TAG, "currentLocation lon " + lon);
-                        }
-                        else{
+                        } else {
                             Toast.makeText(CadastroGatoActivity.this, "Localização não encontrada", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -92,18 +92,30 @@ public class CadastroGatoActivity extends AppCompatActivity {
         cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(caracteristica.getText().toString().equals("") || telefone.getText().toString().equals("")){
+                if (caracteristica.getText().toString().equals("") || telefone.getText().toString().equals("")) {
                     Toast.makeText(CadastroGatoActivity.this, "Preencha as características e o telefone", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else if (uri == null) {
+                    Toast.makeText(CadastroGatoActivity.this, "Por favor, tire uma foto do gatinho", Toast.LENGTH_SHORT).show();
+                } else {
                     gato = new Gato();
                     gato.setCaracteristicas(caracteristica.getText().toString());
                     gato.setDonoGato(token);
                     gato.setLatLng(loc);
                     gato.setTelefone(telefone.getText().toString());
                     gato.salvar(getApplicationContext(), gato);
+                    StorageReference filepath = appStorage.child("ProfilePics");
+                    filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            downloadUri = taskSnapshot.getDownloadUrl();
+                            Picasso.with(CadastroGatoActivity.this).load(downloadUri).fit().centerCrop().into(fotoGato);
+                            Toast.makeText(CadastroGatoActivity.this, "Upload de Imagem OK", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                     Toast.makeText(getApplication(), "Sucesso ao cadastrar o Gato", Toast.LENGTH_LONG).show();
                     finish();
+
                 }
             }
         });
@@ -112,7 +124,7 @@ public class CadastroGatoActivity extends AppCompatActivity {
     }
 
 
-    public void takePic (View view){
+    public void takePic(View view) {
        /* if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.CAMERA}, REQUEST_PERMISSION_CAMERA);
         }
@@ -128,19 +140,11 @@ public class CadastroGatoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, final int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
-            Uri uri = data.getData();
-          //  StorageReference filepath = appStorage.child("ProfilePics").child(uri.getLastPathSegment());
-            StorageReference filepath = appStorage.child("ProfilePics").child(uri.getLastPathSegment());
-            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            uri = data.getData();
+            //  StorageReference filepath = appStorage.child("ProfilePics").child(uri.getLastPathSegment());
 
-                    Uri downloadUri = taskSnapshot.getDownloadUrl();
-                    Picasso.with(CadastroGatoActivity.this).load(downloadUri).fit().centerCrop().into(fotoGato);
-                    Toast.makeText(CadastroGatoActivity.this, "Upload de Imagem OK", Toast.LENGTH_SHORT).show();
-                }
-            });
+
         }
     }
 
