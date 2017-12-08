@@ -64,20 +64,20 @@
                     android:layout_height="match_parent"
                     android:id="@+id/txtSexo"
                     android:textSize="18sp"
-                    android:text="Sexo: "
+                    android:text="@string/sexo"
                     android:layout_marginLeft="8dp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:id="@+id/rbMasculino"
-                    android:text="Masculino"
+                    android:text="@string/masculino"
                     android:checked="false"
                     android:layout_height="match_parent" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:id="@+id/rbFeminino"
-                    android:text="Feminino"
+                    android:text="@string/feminino"
                     android:checked="false"
                     android:layout_height="match_parent" />
 
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:id="@+id/btnCadastrar"
-                android:text="Cadastrar"
+                android:text="@string/cadastrar"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>

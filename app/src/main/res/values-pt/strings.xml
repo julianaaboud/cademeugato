@@ -15,4 +15,13 @@
     <string name="title_activity_maps">Map</string>
     <string name="telefone">Telefone no formato: 11999999999</string>
     <string name="foto">Ao clicar para tirar foto, aguarde até que a imagem esteja carregada na tela! Caso queira tirar mais fotos clique novamente na imagem da câmera!</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="feminino">Feminino</string>
+    <string name="masculino">Masculino</string>
+    <string name="sexo">Sexo:</string>
+    <string name="salvar">Salvar</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="tirar_nova_foto">Tirar nova foto</string>
+    <string name="entrar">Entrar</string>
+    <string name="n_o_tem_cadastro_clique_aqui_para_fazer_um">Não tem cadastro? Clique aqui para fazer um!</string>
 </resources>

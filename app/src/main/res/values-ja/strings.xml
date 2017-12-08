@@ -15,4 +15,13 @@
     <string name="title_activity_maps">地図</string>
     <string name="telefone">電話形式：11999999999</string>
     <string name="foto">クリックして写真を撮ると、画面に画像が読み込まれるまで待ちます！より多くの写真を撮りたい場合は、カメラの画像をもう一度クリックしてください！</string>
+    <string name="cadastrar">登録</string>
+    <string name="feminino">女性の</string>
+    <string name="masculino">メンズ</string>
+    <string name="sexo">セックス</string>
+    <string name="salvar">Salvar</string>
+    <string name="editar_perfil">プロフィールを編集</string>
+    <string name="tirar_nova_foto">新しい写真を撮る</string>
+    <string name="entrar">サインイン</string>
+    <string name="n_o_tem_cadastro_clique_aqui_para_fazer_um">アカウントはまだありませんか？ここをクリックして1つを作成してください！</string>
 </resources>

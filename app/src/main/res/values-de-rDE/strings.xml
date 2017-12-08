@@ -15,4 +15,13 @@
     <string name="title_activity_maps">Karte</string>
     <string name="telefone">Telefon im Format: 11999999999</string>
     <string name="foto">Wenn Sie auf ein Foto klicken, warten Sie, bis das Bild auf dem Bildschirm geladen ist. Wenn Sie mehr Fotos machen möchten, klicken Sie erneut auf das Bild der Kamera!</string>
+    <string name="cadastrar">Registrieren</string>
+    <string name="feminino">Frauen</string>
+    <string name="masculino">Männer</string>
+    <string name="sexo">Sex:</string>
+    <string name="salvar">Speichern</string>
+    <string name="editar_perfil">Profil bearbeiten</string>
+    <string name="tirar_nova_foto">Mach ein neues Foto</string>
+    <string name="entrar">Anmelden</string>
+    <string name="n_o_tem_cadastro_clique_aqui_para_fazer_um">Noch kein Konto? Klicken Sie hier, um eins zu machen!</string>
 </resources>

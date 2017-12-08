@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="Entrar" />
+            android:text="@string/entrar" />
 
         <TextView
             android:id="@+id/txtCadastrarLink"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Não tem cadastro? Clique aqui para fazer um!"
+            android:text="@string/n_o_tem_cadastro_clique_aqui_para_fazer_um"
             android:textSize="15sp" />
 
     </LinearLayout>

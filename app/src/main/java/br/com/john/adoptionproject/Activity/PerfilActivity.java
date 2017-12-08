@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,14 +31,16 @@ public class PerfilActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     //private static final int RESULT_LOAD_IMAGE = 1;
     private Button btnGravarFoto;
+    private Button btnEditarPerfil;
     private ImageView ivFotoPerfil;
     private Bundle bundle;
     private String token;
     private StorageReference appStorage;
-    private Users usuario;
+    private Users users;
     private EditText nome, sobrenome, email;
-    private static final String TAG = PerfilActivity.class.getName();
     DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
+
+    private static final String TAG = PerfilActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,26 @@ public class PerfilActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         token = bundle.getString("token");
 
+        Log.d(TAG, "onCreateView token:" + token);
+
         nome = (EditText) findViewById(R.id.etxtPerfilNome);
         sobrenome = (EditText) findViewById(R.id.etxtPerfilSobrenome);
         email = (EditText) findViewById(R.id.etxtPerfilEmail);
+        btnEditarPerfil = (Button) findViewById(R.id.btnEditarPerfil);
+
+        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                users.setName(nome.getText().toString());
+                users.setSurname(sobrenome.getText().toString());
+                users.setEmail(email.getText().toString());
+                Log.d(TAG, "token" + token);
+                DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
+                referenciaFirebase.child("usuario").child(token).setValue(users);
+                Toast.makeText(PerfilActivity.this, "Alteração efetuada com sucesso", Toast.LENGTH_LONG).show();
+            }
+
+        });
 
         referenciaFirebase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -64,12 +84,12 @@ public class PerfilActivity extends AppCompatActivity {
                             String key = user.getValue().toString();
                             //Log.d(TAG, "onDataChange key: " + key);
 
-                            usuario = user.getValue(Users.class);
+                            users = user.getValue(Users.class);
                             //Log.d(TAG, "onDataChange key: " + usuario.getNome());
 
-                            nome.setText(usuario.getName());
-                            sobrenome.setText(usuario.getSurname());
-                            email.setText(usuario.getEmail());
+                            nome.setText(users.getName());
+                            sobrenome.setText(users.getSurname());
+                            email.setText(users.getEmail());
                         }
                     }
                 }
@@ -107,7 +127,6 @@ public class PerfilActivity extends AppCompatActivity {
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                     Uri downloadUri = taskSnapshot.getDownloadUrl();
 
                     Picasso.with(PerfilActivity.this).load(downloadUri).fit().centerCrop().into(ivFotoPerfil);

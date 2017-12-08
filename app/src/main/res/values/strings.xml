@@ -14,4 +14,13 @@
     <string name="title_activity_maps">Map</string>
     <string name="telefone">Phone on format: 11999999999</string>
     <string name="foto">When you click to take a picture, wait until the image is loaded on the screen! If you want to take more pictures click on the camera image again!</string>
+    <string name="cadastrar">Insert</string>
+    <string name="feminino">Female</string>
+    <string name="masculino">Male</string>
+    <string name="sexo">Sex:</string>
+    <string name="salvar">Save</string>
+    <string name="editar_perfil">Change Profile</string>
+    <string name="tirar_nova_foto">Take new Picture</string>
+    <string name="entrar">Login</string>
+    <string name="n_o_tem_cadastro_clique_aqui_para_fazer_um">Do not have a profile? Click here to get one!</string>
 </resources>

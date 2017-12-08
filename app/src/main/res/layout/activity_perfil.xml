@@ -19,7 +19,7 @@
         android:id="@+id/btnGravarFoto"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:text="Tirar nova foto"
+        android:text="@string/tirar_nova_foto"
         android:textSize="12sp"
         android:layout_gravity="center"
         android:gravity="center" />
@@ -27,34 +27,28 @@
     <EditText
         android:layout_width="match_parent"
         android:id="@+id/etxtPerfilNome"
-        android:hint="Nome"
+        android:hint="@string/nome"
         android:inputType="text"
         android:layout_height="wrap_content" />
     <EditText
         android:layout_width="match_parent"
         android:id="@+id/etxtPerfilSobrenome"
-        android:hint="Sobrenome"
+        android:hint="@string/sobrenome"
         android:inputType="text"
         android:layout_height="wrap_content" />
     <EditText
         android:layout_width="match_parent"
         android:id="@+id/etxtPerfilEmail"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:layout_height="wrap_content" />
 
     <Button
         android:layout_width="130dp"
         android:id="@+id/btnEditarPerfil"
-        android:text="Editar perfil"
+        android:text="@string/salvar"
         android:layout_gravity="left"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnSalvarPerfil"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="Salvar" />
 
 </LinearLayout>
